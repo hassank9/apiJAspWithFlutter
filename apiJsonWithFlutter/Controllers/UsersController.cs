@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using MyApi.Models;
 using System.Data.SqlClient;
 
 namespace apiJsonWithFlutter.Controllers
@@ -47,6 +48,65 @@ namespace apiJsonWithFlutter.Controllers
             ResponseUsers response = new ResponseUsers();
             DAL dal = new DAL();
             response = dal.AddUsers(con, users);
+            return response;
+        }
+
+        [HttpPost]
+        [Route("reSend")]
+        public ResponseVerfiycode reSendVerfiyCode(ResponseVerfiycode responseVerfiycode)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AppConn").ToString());
+            ResponseVerfiycode response = new ResponseVerfiycode();
+            DAL dal = new DAL();
+            response = dal.reSendVerfiyCode(con, responseVerfiycode);
+            return response;
+        }
+
+
+        [HttpPost]
+        [Route("Verfiycode")]
+        public ResponseVerfiycode Verfiycode(ResponseVerfiycode responseVerfiycode)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AppConn").ToString());
+            ResponseVerfiycode response = new ResponseVerfiycode();
+            DAL dal = new DAL();
+            response = dal.Verfiycode(con, responseVerfiycode);
+            return response;
+        }
+
+
+        [HttpPost]
+        [Route("Login")]
+        public ResponseLogin Login(ResponseLogin responseLogin)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AppConn").ToString());
+            ResponseLogin response = new ResponseLogin();
+            DAL dal = new DAL();
+            response = dal.Login(con, responseLogin);
+            return response;
+        }
+
+
+        [HttpPost]
+        [Route("CheckEmail")]
+        public ResponseLogin CheckEmail(ResponseLogin responseLogin)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AppConn").ToString());
+            ResponseLogin response = new ResponseLogin();
+            DAL dal = new DAL();
+            response = dal.CheckEmail(con, responseLogin);
+            return response;
+        }
+
+
+        [HttpPost]
+        [Route("ResetPassword")]
+        public ResponseLogin ResetPassword(ResponseLogin responseLogin)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AppConn").ToString());
+            ResponseLogin response = new ResponseLogin();
+            DAL dal = new DAL();
+            response = dal.ResetPassword(con, responseLogin);
             return response;
         }
     }
