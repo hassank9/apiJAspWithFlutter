@@ -100,7 +100,7 @@ namespace apiJsonWithFlutter.Controllers
 
 
         [HttpPost]
-        [Route("ResetPassword")]
+        [Route("    ")]
         public ResponseLogin ResetPassword(ResponseLogin responseLogin)
         {
             SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AppConn").ToString());
